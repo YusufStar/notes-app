@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+{/* Login Custom CSS */}
+
+.custom-linear-gradient::before {
+    background: linear-gradient(0deg, transparent, #45f3ff);
+    transform-origin: bottom right;
+    animation: animate 6s linear infinite;
+}
+
+.custom-linear-gradient::after {
+    background: linear-gradient(0deg, transparent, #45f3ff);
+    transform-origin: bottom right;
+    animation: animate 6s linear infinite;
+    animation-delay: -3s;
+}
+
+.form {
+    padding: 50px 40px;
+}
+
+.inputbox-input {
+    z-index: 10;
+    padding: 20px 10px 10px;
+}
+
+.inputbox-span {
+    padding: 20px 0px 10px;
+    pointer-events: none;
+    transition: 0.5s;
+}
+
+.inputbox input:valid ~ span,
+.inputbox input:focus ~ span {
+    color: #45f3ff;
+    transform: translateY(-34px);
+    font-size: 0.75em;
+}
+
+.inputbox i {
+    z-index: 9;
+    transition: 0.5s;
+    pointer-events: none;
+}
+
+.inputbox input:valid ~ i,
+.inputbox input:focus ~ i {
+    height: 44px;
+}
+
+.links-a {
+    margin: 10px 0;
+}
+
+.links-a:hover,
+.links-a:nth-child(2) {
+    color: #45f3ff;
+}
+
+.custom-input {
+    padding: 11px 25px;
+}
+
+.custom-input:active {
+    opacity: 0.8;
+}
+
+@keyframes animate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
