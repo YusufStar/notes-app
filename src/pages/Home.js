@@ -5,9 +5,26 @@ import { ref, child, get } from "firebase/database";
 import { signOut } from "firebase/auth"
 import {auth} from "../firebase/firebase-seed"
 import LeftBar from '../Components/LeftBar';
+import NoteContent from '../Components/NoteContent';
 
 function Home({user, Setlogin, login}) {
+  const [selectedText, setselectedText] = useState('')
   const [data, setdata] = useState([])
+  const [SelectedNote, setSelectedNote] = useState(0)
+  const [text, Settext] = useState('')
+
+  function getText(i) {
+      const dbRef = ref(database);
+        get(child(dbRef, `notes/${user.uid}/notes`)).then((snapshot) => {
+          if (snapshot.exists()) {
+            Settext(snapshot.val()[i].noteText)     
+          } else {
+            console.log("No data available");
+          }
+        }).catch((error) => {
+          console.error(error);
+        });
+  }
 
   function getData() {
     const dbRef = ref(database);
@@ -67,7 +84,8 @@ function Home({user, Setlogin, login}) {
   }
   return (
     <>
-      <LeftBar user={user} notesData={data} getData={getData}/>
+      <LeftBar SetSelectedNote={setSelectedNote} user={user} getText={getText} notesData={data} getData={getData} logOut={logOut} setselectedText={setselectedText}/>
+      <NoteContent user={user} text={text} Settext={Settext} getText={getText} i={SelectedNote} selectedText={selectedText}/>
     </>
   )
 }

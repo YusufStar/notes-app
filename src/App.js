@@ -18,7 +18,7 @@ function App() {
   const [login, Setlogin] = useState(false)
   
   return (
-    <div className="overflow-hidden flex h-screen justify-center bg-[#23242a]">
+    <div className="overflow-hidden flex h-screen justify-center items-end bg-[#23242a]">
       {/* if login LoginPage Or HomePage */}
       {login ? <Home user={user} Setlogin={Setlogin} login={login}/>:<LoginPage Setlogin={Setlogin}/>}
     </div>

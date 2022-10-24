@@ -127,7 +127,7 @@ function LoginPage({Setlogin}) {
       draggable
       theme="dark"
     />
-    <div className={`mt-[15%] overflow-hidden relative w-[380px] h-[420px] rounded-[8px] bg-[#1c1c1c] before:content-[""] before:absolute before:w-[380px] before:h-[420px] before:top-[-50%] before:left-[-50%] after:content-[""] after:absolute after:w-[380px] after:h-[420px] after:top-[-50%] after:left-[-50%] custom-linear-gradient`}>
+    <div className={`mt-[15%] mb-[15%] overflow-hidden relative w-[380px] h-[420px] rounded-[8px] bg-[#1c1c1c] before:content-[""] before:absolute before:w-[380px] before:h-[420px] before:top-[-50%] before:left-[-50%] after:content-[""] after:absolute after:w-[380px] after:h-[420px] after:top-[-50%] after:left-[-50%] custom-linear-gradient`}>
       <div className="absolute inset-[2px] rounded-[8px] bg-[#28292d] z-[10] form flex flex-col">
         <h2 className='text-[#45f3ff] text-2xl font-[500] text-center tracking-[0.1em]'>Sign in</h2>
         <div className="relative w-[300px] mt-[35px] inputbox">
@@ -141,8 +141,8 @@ function LoginPage({Setlogin}) {
           <i className='absolute left-0 bottom-0 w-[100%] h-[2px] bg-[#45f3ff] rounded-[4px]'></i>
         </div>
           <div className="flex justify-between">
-            <a className='links-a font-[0.75em] decoration-none text-[#8f8f8f]' href="">Forgot Password</a>
-            <a className='links-a font-[0.75em] decoration-none text-[#8f8f8f]' onClick={() => Setregister(!register)}>{register ? "Log in":"Sign Up"}</a>
+            <a className='links-a font-[0.75em] cursor-pointer decoration-none text-[#8f8f8f]' href="">Forgot Password</a>
+            <a className='links-a font-[0.75em] cursor-pointer decoration-none text-[#8f8f8f]' onClick={() => Setregister(!register)}>{register ? "Log in":"Sign Up"}</a>
           </div>
         <input 
         onClick={(e) => {
