@@ -1,14 +1,11 @@
 import React, { useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { firebaseConfig } from "../firebase/firebase-seed"
-import { initializeApp } from "firebase/app";
-import { getDatabase, set, ref, update } from "firebase/database"
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth"
+import { database, auth } from "../firebase/firebase-seed"
+import { set, ref, update } from "firebase/database"
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth"
 
-function LoginPage({Setlogin, auth}) {
-  const app = initializeApp(firebaseConfig);
-  const database = getDatabase(app)
+function LoginPage({Setlogin}) {
 
   const [register, Setregister] = useState(false)
   const [email, SetEmail] = useState("")
@@ -56,11 +53,21 @@ function LoginPage({Setlogin, auth}) {
   function createUser(e) {
     createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
+      console.log(userCredential);
       const user = userCredential.user
 
       set(ref(database, 'users/' + user.uid), {
         username: email,
         email: email
+      })
+
+      set(ref(database, `notes/` + user.uid), {
+        notes: [
+          {
+          noteName:"Hello",
+          noteText:"Hello User, Welcome NotesApp"
+          }
+      ]
       })
 
       successtoast('user created!')
@@ -120,7 +127,7 @@ function LoginPage({Setlogin, auth}) {
       draggable
       theme="dark"
     />
-    <div className={`overflow-hidden relative w-[380px] h-[420px] rounded-[8px] bg-[#1c1c1c] before:content-[""] before:absolute before:w-[380px] before:h-[420px] before:top-[-50%] before:left-[-50%] after:content-[""] after:absolute after:w-[380px] after:h-[420px] after:top-[-50%] after:left-[-50%] custom-linear-gradient`}>
+    <div className={`mt-[15%] overflow-hidden relative w-[380px] h-[420px] rounded-[8px] bg-[#1c1c1c] before:content-[""] before:absolute before:w-[380px] before:h-[420px] before:top-[-50%] before:left-[-50%] after:content-[""] after:absolute after:w-[380px] after:h-[420px] after:top-[-50%] after:left-[-50%] custom-linear-gradient`}>
       <div className="absolute inset-[2px] rounded-[8px] bg-[#28292d] z-[10] form flex flex-col">
         <h2 className='text-[#45f3ff] text-2xl font-[500] text-center tracking-[0.1em]'>Sign in</h2>
         <div className="relative w-[300px] mt-[35px] inputbox">
