@@ -85,7 +85,7 @@ function Home({user, Setlogin, login}) {
   return (
     <>
       <LeftBar SetSelectedNote={setSelectedNote} user={user} getText={getText} notesData={data} getData={getData} logOut={logOut} setselectedText={setselectedText}/>
-      <NoteContent user={user} text={text} Settext={Settext} getText={getText} i={SelectedNote} selectedText={selectedText}/>
+      <NoteContent user={user} text={text} Settext={Settext} getText={getText} mydata={data} i={SelectedNote} selectedText={selectedText}/>
     </>
   )
 }
