@@ -29,7 +29,15 @@ function LeftBar({user, notesData, getData}) {
                     <MdAdd onClick={() => addNote()} color='#45f3ff' className="cursor-pointer w-[25px] h-[25px] active:scale"/>
                 </div>
                 <div className="w-[90%] mt-5 gap-3 flex flex-col itesm-center">
-                  {notesData.map((note) => (
+                  {notesData
+                  .filter((note)=> {
+                    if(note.noteName == "") {
+                      return note
+                    } else if(note.noteName.toLowerCase().includes(inputRef.toLowerCase())) {
+                      return note
+                    }
+                  })
+                  .map((note) => (
                     <h1 key={note.noteName} className='text-base text-white cursor-pointer p-1 rounded-lg bg-[#45f3ff]/70 hover:scale-95 hover:bg-[#45f3ff]/50 transition-all duration-200'>{note.noteName}</h1>
                   ))}
                 </div>
